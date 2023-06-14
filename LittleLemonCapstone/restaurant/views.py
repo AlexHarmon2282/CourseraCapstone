@@ -18,8 +18,8 @@ class BookingViewSet(ModelViewSet):
     
 
 class MenuItemView(ListCreateAPIView):
-    #queryset = models.Menu.objects.all()
-    #serializer_class = serializers.MenuItemSerializer
+    queryset = models.Menu.objects.all()
+    serializer_class = serializers.MenuItemSerializer
 
     def post(self, request):
         serializer = serializers.MenuItemSerializer(data=request.data)
@@ -32,8 +32,8 @@ class MenuItemView(ListCreateAPIView):
         pass            #FIX LATER
 
 class SingleMenuItemView(RetrieveUpdateAPIView, DestroyAPIView):
-    #queryset = models.Menu.objects.all()
-    #serializer_class = serializers.MenuItemSerializer
+    queryset = models.Menu.objects.all()
+    serializer_class = serializers.MenuItemSerializer
     
     def get(self, request):
         pass
