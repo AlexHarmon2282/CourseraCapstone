@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView, DestroyAPIView
 from . import models
 from . import serializers
+from rest_framework.decorators import api_view
 
 def index(request):
  return render(request, 'index.html', {})
@@ -16,6 +17,9 @@ class bookingView(APIView):
     
 
 class MenuItemView(ListCreateAPIView):
+    #queryset = models.Menu.objects.all()
+    #serializer_class = serializers.MenuItemSerializer
+
     def post(self, request):
         serializer = serializers.MenuItemSerializer(data=request.data)
         
@@ -27,6 +31,9 @@ class MenuItemView(ListCreateAPIView):
         pass            #FIX LATER
 
 class SingleMenuItemView(RetrieveUpdateAPIView, DestroyAPIView):
+    #queryset = models.Menu.objects.all()
+    #serializer_class = serializers.MenuItemSerializer
+    
     def get(self, request):
         pass
     def put(self, request):
