@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView, DestroyAPIView
+from rest_framework.viewsets import ModelViewSet
 from . import models
 from . import serializers
 from rest_framework.decorators import api_view
@@ -9,11 +10,11 @@ from rest_framework.decorators import api_view
 def index(request):
  return render(request, 'index.html', {})
 
-class bookingView(APIView):
+class BookingViewSet(ModelViewSet):
     def get(self, request):
         items = models.booking.objects.all()
-        serializer = serializers.BookingSerializer(items, many = True)
-        return Response(serializer.data)
+        serializer_class = serializers.BookingSerializer(items, many = True)
+        return Response(serializer_class.data)
     
 
 class MenuItemView(ListCreateAPIView):
