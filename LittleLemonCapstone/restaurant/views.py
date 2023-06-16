@@ -20,3 +20,8 @@ class menuView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response({"status":"success", "data": serializer.data})
+        
+    def get(self, request):
+        items = models.Menu.objects.all()
+        serializer = serializers.MenuSerializer(items, many = True)
+        return Response(serializer.data)
