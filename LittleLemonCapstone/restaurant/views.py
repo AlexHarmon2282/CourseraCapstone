@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from . import models
 from . import serializers
-from rest_framework.decorators import api_view, permission_classes
+
 
 def index(request):
  return render(request, 'index.html', {})
